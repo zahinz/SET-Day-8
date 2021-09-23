@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Video player</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400;700&display=swap" rel="stylesheet">
+        
+
+    <!-- FONT AWESOME PACK -->
+    <script src="https://kit.fontawesome.com/8ff303108c.js" crossorigin="anonymous"></script>
+
+
+    <!-- CSS STYLE -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- FAVICON -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🚀</text></svg>">
+
+
+</head>
+<body>
+
+    <div id="container">
+
+        <!-- TOP STATIC SECTION -->
+        <div class="top-section">
+
+
+            <!-- GREETINGS -->
+            <div id="titleVideo" class="title">
+                <h1>Hello <span id="guestName">There</span>!</h1>
+                <h2>What you want to watch today?</h2>
+            </div>
+
+
+            <!-- SEARCH BAR -->
+
+            <div id="searchBar" class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" name="" id="" placeholder="What is your mood today?">
+            </div>
+
+
+            <!-- VIDEO PLAYER -->
+
+            <div class="video-container">
+                <video src="assets/videos/video-1.mp4" id="video" controls autoplay muted></video>
+            </div>
+
+
+            <!-- BUTTONS -->
+
+            <div class="player-btn-container">
+                <!-- LOOP -->
+                <div id="loopBtn" class="sec-btn" onclick="loopVid()">
+                    <i class="fas fa-redo idle"></i>
+                </div>
+                <!-- CONTROLLER -->
+                <div id="controlBtn" class="sec-btn">
+                    <i class="fas fa-angle-up"></i>
+                </div>
+                <!-- PLAY PAUSE -->
+                <div id="playBtn" class="main-btn" onclick="playVid()">
+                    <i class="fas fa-pause"></i>
+                </div>
+                <!-- VOLUME UP -->
+                <div id="volUpBtn" class="sec-btn" onclick="volLevel(-0.1)">
+                    <i class="fas fa-volume-down"></i>
+                </div>
+                <!-- VOLUME DOWN -->
+                <div id="voDownBtn" class="sec-btn" onclick="volLevel(0.1)">
+                    <i class="fas fa-volume-up"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- OTHER VIDEOS -->
+
+        <div class="bottom-section">
+
+            <!-- VIDEO 1 -->
+            <div class="video-card card-1" onclick="switchVid(`assets/videos/video-1.mp4`)">
+                <div class="thumbnail">
+
+                </div>
+                <div class="video-details">
+                    <div class="info">
+                        <div>
+                            <h2>iPad Mini 2021 Review: Pocketable Power!</h2>
+                            <h3>
+                                Marques Brownlee
+                                </h3>
+                        </div>
+                        <p>9.08</p>
+                    </div>
+                    <div class="main-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 2 -->
+            <div class="video-card card-2" onclick="switchVid(`assets/videos/video-2.mp4`)">
+                <div class="thumbnail">
+
+                </div>
+                <div class="video-details">
+                    <div class="info">
+                        <div>
+                            <h2>Microsoft Surface Laptop Studio: what the what?</h2>
+                            <h3>The Verge
+                            </h3>
+                        </div>
+                        <p>4.00</p>
+                    </div>
+                    <div class="card main-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- VIDEO 3 -->
+            <div class="video-card card-3" onclick="switchVid(`assets/videos/video-3.mp4`)">
+                <div class="thumbnail">
+
+                </div>
+                <div class="video-details">
+                    <div class="info">
+                        <div>
+                            <h2>The all new iPad Mini | Unboxing and first impressions!</h2>
+                            <h3>
+                                iJustine
+                                </h3>
+                        </div>
+                        <p>11.15</p>
+                    </div>
+                    <div class="main-btn">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+
+    <!-- JAVASCRIPT -->
+    <script src="script.js"></script>
+    
+</body>
+</html>

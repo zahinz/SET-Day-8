@@ -1,0 +1,109 @@
+* {
+    margin: 0; 
+    padding: 0; 
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%; 
+    width: 100%;
+    font-family: 'Roboto', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img {
+    width: 100%;
+}
+
+video {
+    width: 100%;
+}
+
+#container {
+    width: 900px;
+    /* height: 600px; */
+    border: 1px solid gray;
+    padding: 2rem;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    transition: all 100ms;
+}
+
+#container h1 {
+    height: 100px;
+    width: 250px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container video {
+    width: 80%;
+}
+
+/* #pauseBtn {
+    display: none;
+} */
+
+.button {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.btn {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    color: white;
+    background-color: skyblue;
+    border: 3px solid skyblue;
+
+    font-size: 1.2rem;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin: 10px;
+
+    transition: all 100ms;
+
+    user-select: none;
+}
+
+.btn:active {
+    color: gray;
+    background-color: white;
+    transform: scale(105%);
+}
+
+.bounceAnimation {
+    animation-name: bounceAni;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+}
+
+@keyframes bounceAni {
+
+    from {
+        transform: scale(100%);
+    }
+
+    to {
+        transform: scale(150%);
+    }
+    
+}
