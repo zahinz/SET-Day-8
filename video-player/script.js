@@ -13,8 +13,8 @@ myName.innerHTML=`${fillName}`
 // *video ID
 let vid = document.getElementById(`video`)
 
-// *player status
-let statusVideo = false
+// *player pause status
+let pauseStatus = false
 
 // *play pause button
 let ico = document.getElementById(`playBtn`)
@@ -26,7 +26,17 @@ let volume = 1;
 vid.loop = false
 
 // *loop icon
-loopIco = document.getElementById(`loopBtn`)
+let loopIco = document.getElementById(`loopBtn`)
+
+// *loop label 
+let loopLabel = document.getElementById(`loopTxt`)
+
+// *mute label
+let muteLabel = document.getElementById(`muteTxt`)
+let unmuteLabel = document.getElementById(`unmuteTxt`)
+
+// *volume label 
+let volLabel = document.getElementById(`volTxt`)
 
 
 
@@ -39,18 +49,18 @@ loopIco = document.getElementById(`loopBtn`)
 
 // *play pause and change icon function
 function playVid () {
-    if (statusVideo == true) {
+    if (pauseStatus == true) {
         vid.play();
-        statusVideo = false;
-        console.log(statusVideo);
+        pauseStatus = false;
+        console.log(pauseStatus);
         ico.innerHTML = `<i class="fas fa-pause"></i>`
         console.log(`this is pause status `, vid.paused);
     }
 
-    else if (statusVideo == false) {
+    else if (pauseStatus == false) {
         vid.pause();
-        statusVideo = true;
-        console.log(statusVideo);
+        pauseStatus = true;
+        console.log(pauseStatus);
         ico.innerHTML = `<i class="fas fa-play"></i>`
         console.log(`this is pause status `, vid.paused);
     }
@@ -60,10 +70,15 @@ function playVid () {
 function volLevel(num) {
 
     vid.muted = false;
+    muteLabel.style.display = `none`
+    unmuteLabel.style.display = `none`
+    volLabel.style.display = `block`
     volume += num;
     
-    if (volume < 0) {
+    if (volume < 0.1) {
         volume = 0
+        muteLabel.style.display = `block`
+        volLabel.style.display = `none`
         console.log(volume, 1);
     }
 
@@ -74,19 +89,36 @@ function volLevel(num) {
 
     vid.volume = volume;
     console.log(volume, 3);
+    // NEW KNOWLEDGE HERE 
+    // *add animation className
+    volLabel.classList.add(`vol-fade-out`);
+    console.log(volLabel.classList);
+    volLabel.innerHTML = Math.round(volume*100);
+
+    // *remove animation className after 2.5 seconds
+    setTimeout(function removeClass() {
+        volLabel.classList.remove(`vol-fade-out`);
+        volLabel.style.display = `none`;
+    console.log(volLabel.classList);
+     } , 2500)
+    
     
 }
 
-// *loop button
+// *loop video button
 function loopVid() {
     if (vid.loop == false) {
         vid.loop = true
-        console.log(vid.loop);
+        console.log(`loop video status`, vid.loop);
+        loopLabel.innerHTML = `loop`;
+        loopLabel.style.display = `block`
         loopIco.innerHTML = `<i class="fas fa-redo active"></i>`
     }
     else if (vid.loop == true) {
         vid.loop = false
-        console.log(vid.loop);
+        console.log(`loop video status`, vid.loop);
+        loopLabel.innerHTML = ``;
+        loopLabel.style.display = `none`
         loopIco.innerHTML = `<i class="fas fa-redo idle"></i>`
     }
 }
@@ -95,7 +127,8 @@ function loopVid() {
 // *switch video
 function switchVid(vidFile) {
     vid.src = vidFile
-    statusVideo = false
+    pauseStatus = false
+    console.log(pauseStatus);
     ico.innerHTML = `<i class="fas fa-pause"></i>`
 }
 
