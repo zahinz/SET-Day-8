@@ -59,6 +59,7 @@ function playVid () {
 // *volume controller
 function volLevel(num) {
 
+    vid.muted = false;
     volume += num;
     
     if (volume < 0) {
@@ -94,6 +95,7 @@ function loopVid() {
 // *switch video
 function switchVid(vidFile) {
     vid.src = vidFile
+    statusVideo = false
     ico.innerHTML = `<i class="fas fa-pause"></i>`
 }
 
