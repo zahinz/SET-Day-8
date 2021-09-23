@@ -19,6 +19,10 @@ body {
     
 }
 
+body > * {
+    transition: all 500ms;
+}
+
 img, video {
     width: 100%;
 }
@@ -64,6 +68,7 @@ h1, h2, h3, h4, p, i {
     border-radius: 30px;
     padding: 1rem;
     box-sizing: border-box;
+    min-width: 330px;
 
     background: rgb(28,32,61);
     background: linear-gradient(65deg, rgba(28,32,61,1) 0%, rgba(17,21,53,1) 100%);;
@@ -392,6 +397,34 @@ h1, h2, h3, h4, p, i {
     background-size: cover;
 }
 
+
+/* MOBILE RESPONSIVE */
+
+@media (max-width: 450px) {
+
+
+    #container {
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 1.5rem 2rem;
+        box-sizing: border-box;
+    
+        background: rgb(28,32,61);
+        background: linear-gradient(65deg, rgba(28,32,61,1) 0%, rgba(17,21,53,1) 100%);;
+        overflow: visible;
+    
+    }
+
+    .bottom-section {
+        height: auto;
+        padding-bottom: 0;
+        overflow-y: scroll;
+    }
+
+
+    
+}
 
 
 
