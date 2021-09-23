@@ -38,10 +38,12 @@ let unmuteLabel = document.getElementById(`unmuteTxt`)
 // *volume label 
 let volLabel = document.getElementById(`volTxt`)
 
+// *testing timer
+let timerSet = 0
 
+// *input ID
+let myInput = document.getElementById(`inputField`)
 
-
-// ? change icon when autoplay 
 
 
 
@@ -69,39 +71,53 @@ function playVid () {
 // *volume controller
 function volLevel(num) {
 
+    // *check mute status
     vid.muted = false;
+
+    // *disable mute label
     muteLabel.style.display = `none`
     unmuteLabel.style.display = `none`
+
+    // *enable volume label
     volLabel.style.display = `block`
+
+    // *increase or decrease volume
     volume += num;
     
-    if (volume < 0.1) {
-        volume = 0
-        muteLabel.style.display = `block`
-        volLabel.style.display = `none`
-        console.log(volume, 1);
-    }
+        // *limit the max and min
+        if (volume < 0.1) {
+            volume = 0
+            muteLabel.style.display = `block`
+            volLabel.style.display = `none`
+            console.log(volume, 1);
+        }
 
-    else if (volume > 1) {
-        volume = 1
-        console.log(volume, 2);
-    }
+        else if (volume > 1) {
+            volume = 1
+            console.log(volume, 2);
+        }
 
+    // *apply the number on video
     vid.volume = volume;
     console.log(volume, 3);
-    // NEW KNOWLEDGE HERE 
-    // *add animation className
+
+
+    // ! NEW KNOWLEDGE HERE 
+    // *add animation className to fade out volume label
     volLabel.classList.add(`vol-fade-out`);
-    console.log(volLabel.classList);
+    // console.log(volLabel.classList);
+
+    // *display volume label & round the number into percentage
     volLabel.innerHTML = Math.round(volume*100);
 
     // *remove animation className after 2.5 seconds
-    setTimeout(function removeClass() {
+    timerSet = setTimeout(function removeClass() {
         volLabel.classList.remove(`vol-fade-out`);
         volLabel.style.display = `none`;
-    console.log(volLabel.classList);
-     } , 2500)
-    
+    // console.log(volLabel.classList);
+    } , 2500)
+
+    console.log(timerSet);
     
 }
 
@@ -131,4 +147,42 @@ function switchVid(vidFile) {
     console.log(pauseStatus);
     ico.innerHTML = `<i class="fas fa-pause"></i>`
 }
+
+
+// *alert after enter input 
+// ! NEW KNOWLEDGE HERE
+function yes() {
+    alert(`When you love what you have, you have everything you need.`) 
+}
+function no() {
+    alert(`Problems are not stop signs, they are guidelines.`) 
+}
+myInput.addEventListener("keydown", function (e) {
+    // console.log(e);
+    if (e.code === `Enter`) {
+        // ?execute function after enter
+
+        // *log keydown e.code == `Enter`
+        console.log(`I PRESS ENTER`);
+
+        // *log input value
+        console.log(myInput.value);
+
+        if (myInput.value == `happy`) {
+            yes() ;
+        }
+        else if (myInput.value == `Happy`) {
+            yes() ;
+        }
+        else if (myInput.value == `HAPPY`) {
+            yes() ;
+        }
+        else {
+            no() ;
+        }
+
+        // *clear input value after press Enter
+        myInput.value = ``;
+    }
+})
 
